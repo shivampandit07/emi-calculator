@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EMI Calculator | Created by Shiv</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <h2>EMI Calculator</h2>
+    <p class="subtitle">Calculate your loan EMI instantly</p>
+
+    <div class="input-box">
+      <label>Loan Amount (₹)</label>
+      <input type="number" id="amount" placeholder="e.g. 500000">
+    </div>
+
+    <div class="input-box">
+      <label>Interest Rate (% yearly)</label>
+      <input type="number" id="rate" placeholder="e.g. 10">
+    </div>
+
+    <div class="input-box">
+      <label>Tenure (Months)</label>
+      <input type="number" id="tenure" placeholder="e.g. 60">
+    </div>
+
+    <button onclick="calculateEMI()">Calculate EMI</button>
+
+    <div class="result-box">
+      <p id="emi"></p>
+      <p id="interest"></p>
+      <p id="total"></p>
+    </div>
+
+    <footer>Created by <span>Shiv</span></footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
