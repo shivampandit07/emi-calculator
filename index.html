@@ -7,35 +7,45 @@
 </head>
 <body>
 
-  <div class="card">
-    <h2>EMI Calculator</h2>
-    <p class="subtitle">Calculate your loan EMI instantly</p>
+  <nav>
+    <h2>Shiv EMI</h2>
+    <button id="themeToggle">🌙</button>
+  </nav>
 
-    <div class="input-box">
+  <div class="container">
+    <h1>EMI Calculator</h1>
+    <p class="subtitle">Simple • Fast • Accurate</p>
+
+    <div class="field">
       <label>Loan Amount (₹)</label>
-      <input type="number" id="amount" placeholder="e.g. 500000">
+      <input type="range" min="50000" max="5000000" step="10000" id="amountRange">
+      <input type="number" id="amount">
     </div>
 
-    <div class="input-box">
+    <div class="field">
       <label>Interest Rate (% yearly)</label>
-      <input type="number" id="rate" placeholder="e.g. 10">
+      <input type="range" min="5" max="20" step="0.1" id="rateRange">
+      <input type="number" id="rate">
     </div>
 
-    <div class="input-box">
+    <div class="field">
       <label>Tenure (Months)</label>
-      <input type="number" id="tenure" placeholder="e.g. 60">
+      <input type="range" min="6" max="360" step="1" id="tenureRange">
+      <input type="number" id="tenure">
     </div>
 
-    <button onclick="calculateEMI()">Calculate EMI</button>
+    <button class="calc-btn" onclick="calculateEMI()">Calculate EMI</button>
 
-    <div class="result-box">
+    <div class="result">
       <p id="emi"></p>
       <p id="interest"></p>
       <p id="total"></p>
     </div>
-
-    <footer>Created by <span>Shiv</span></footer>
   </div>
+
+  <footer>
+    Created by <span>Shiv</span>
+  </footer>
 
   <script src="script.js"></script>
 </body>
