@@ -1,27 +1,49 @@
-function calculateEMI() {
-  let P = Number(document.getElementById("amount").value);
-  let R = Number(document.getElementById("rate").value);
-  let N = Number(document.getElementById("tenure").value);
+const amount = document.getElementById("amount");
+const rate = document.getElementById("rate");
+const tenure = document.getElementById("tenure");
 
-  if (P === 0 || R === 0 || N === 0) {
+const amountRange = document.getElementById("amountRange");
+const rateRange = document.getElementById("rateRange");
+const tenureRange = document.getElementById("tenureRange");
+
+// Sync range & input
+amount.value = amountRange.value;
+rate.value = rateRange.value;
+tenure.value = tenureRange.value;
+
+amountRange.oninput = () => amount.value = amountRange.value;
+rateRange.oninput = () => rate.value = rateRange.value;
+tenureRange.oninput = () => tenure.value = tenureRange.value;
+
+amount.oninput = () => amountRange.value = amount.value;
+rate.oninput = () => rateRange.value = rate.value;
+tenure.oninput = () => tenureRange.value = tenure.value;
+
+function calculateEMI() {
+  let P = +amount.value;
+  let R = +rate.value / 12 / 100;
+  let N = +tenure.value;
+
+  if (!P || !R || !N) {
     alert("Please fill all fields");
     return;
   }
 
-  let monthlyRate = R / 12 / 100;
-
-  let emi = (P * monthlyRate * Math.pow(1 + monthlyRate, N)) /
-            (Math.pow(1 + monthlyRate, N) - 1);
-
-  let totalPayment = emi * N;
-  let totalInterest = totalPayment - P;
+  let emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+  let total = emi * N;
+  let interest = total - P;
 
   document.getElementById("emi").innerText =
     "Monthly EMI: ₹ " + emi.toFixed(2);
 
   document.getElementById("interest").innerText =
-    "Total Interest: ₹ " + totalInterest.toFixed(2);
+    "Total Interest: ₹ " + interest.toFixed(2);
 
   document.getElementById("total").innerText =
-    "Total Payment: ₹ " + totalPayment.toFixed(2);
+    "Total Payment: ₹ " + total.toFixed(2);
 }
+
+// Dark mode
+document.getElementById("themeToggle").onclick = () => {
+  document.body.classList.toggle("dark");
+};
